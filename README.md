@@ -25,18 +25,18 @@ python main.py <path_to_media_file>
 
 ## System Architecture / Use Case
 ```mermaid
-flowchart TD
-    User([User])
+graph TD
+    User(User)
     
     subgraph CMA [Consolidated Multimedia Analyzer System]
-        Validate([Validate File & Size])
-        Identify([Identify File Type])
+        Validate(Validate File and Size)
+        Identify(Identify File Type)
         
-        ImgAnalyzer([Image Analysis Module])
-        AudAnalyzer([Audio Analysis Module])
-        VidAnalyzer([Video Analysis Module])
+        ImgAnalyzer(Image Analysis Module)
+        AudAnalyzer(Audio Analysis Module)
+        VidAnalyzer(Video Analysis Module)
         
-        ReportGen([JSON Report Generator])
+        ReportGen(JSON Report Generator)
     end
     
     User -->|Input Media File| Validate
