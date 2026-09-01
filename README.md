@@ -45,18 +45,7 @@ pip install Pillow mutagen
 
 ## System Architecture
 
-```mermaid
-graph TD
-    A[User Input] --> B[File Validation]
-    B --> C{Identify File Type}
-    C -->|Image| D[ImageAnalyzer]
-    C -->|Audio| E[AudioAnalyzer]
-    C -->|Video| F[VideoAnalyzer]
-    D --> G[Report Generator]
-    E --> G[Report Generator]
-    F --> G[Report Generator]
-    G --> H[report.json]
-```
+![Workflow Diagram](diagram.png)
 
 ## Sample Report Output
 ```json
