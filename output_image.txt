@@ -1,0 +1,15 @@
+================================
+CONSOLIDATED MULTIMEDIA REPORT
+================================
+{
+    "File Type Identified": "IMAGE",
+    "File Name": "test_image.jpg",
+    "File Size": "0.66 KB",
+    "File Format": "JPEG",
+    "Width": "320 px",
+    "Height": "240 px",
+    "Resolution": "Unknown",
+    "Color Mode": "RGB"
+}
+
+Report saved to reports/report.json

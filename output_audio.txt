@@ -1,0 +1,17 @@
+================================
+CONSOLIDATED MULTIMEDIA REPORT
+================================
+{
+    "File Type Identified": "AUDIO",
+    "File Name": "test_audio.mp3",
+    "File Size": "0.02 MB",
+    "Channels": "1",
+    "Sampling Rate": "44100 Hz",
+    "Bit Rate": "63 kbps",
+    "Duration": "2.04 seconds",
+    "Metadata": {
+        "TSSE": "Lavf63.1.101"
+    }
+}
+
+Report saved to reports/report.json
