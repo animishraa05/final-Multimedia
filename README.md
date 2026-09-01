@@ -1,63 +1,68 @@
-# Final Project: Consolidated Multimedia Analyzer
+# Final Project — Consolidated Multimedia Analyzer
 
-This is the final consolidated project that accepts any multimedia file (Image, Audio, Video), automatically identifies its type, analyzes it using the appropriate module, and generates a structured JSON report.
+Accepts any media file (Image, Audio, Video), auto-detects the type, routes it to the correct analyzer module, and produces a structured JSON report.
 
 ## Project Structure
-- `main.py`: Entry point for the application.
-- `file_utils.py`: Contains utilities for file validation, size extraction, and type identification.
-- `image_analyzer.py`: Module for analyzing images.
-- `audio_analyzer.py`: Module for analyzing audio files.
-- `video_analyzer.py`: Module for analyzing video files.
-- `report_generator.py`: Module for exporting the analysis results to a JSON report.
-- `samples/`: Directory for sample media files.
-- `reports/`: Output directory for generated reports.
+```
+multimedia_analyzer/
+├── main.py
+├── file_utils.py
+├── image_analyzer.py
+├── audio_analyzer.py
+├── video_analyzer.py
+├── report_generator.py
+├── samples/
+│   ├── sample.jpg
+│   ├── sample.mp3
+│   └── sample.mp4
+└── reports/
+    └── report.json
+```
 
 ## Usage
 ```bash
-python main.py <path_to_media_file>
+python main.py samples/sample.jpg
+python main.py samples/sample.mp3
+python main.py samples/sample.mp4
 ```
 
 ## Requirements
-- Python 3
-- Pillow (`pip install Pillow`)
-- Mutagen (`pip install mutagen`)
-- FFmpeg/ffprobe installed on the system
-
-## System Architecture / Use Case
-```mermaid
-graph TD
-    User(User)
-    
-    subgraph CMA [Consolidated Multimedia Analyzer System]
-        Validate(Validate File and Size)
-        Identify(Identify File Type)
-        
-        ImgAnalyzer(Image Analysis Module)
-        AudAnalyzer(Audio Analysis Module)
-        VidAnalyzer(Video Analysis Module)
-        
-        ReportGen(JSON Report Generator)
-    end
-    
-    User -->|Input Media File| Validate
-    Validate --> Identify
-    
-    Identify -->|If Image| ImgAnalyzer
-    Identify -->|If Audio| AudAnalyzer
-    Identify -->|If Video| VidAnalyzer
-    
-    ImgAnalyzer --> ReportGen
-    AudAnalyzer --> ReportGen
-    VidAnalyzer --> ReportGen
-    
-    ReportGen -->|Save report.json| User
+```
+pip install Pillow mutagen
+# Also: FFmpeg installed on system
 ```
 
-## Sample Consolidated Report (JSON)
+## Sample Files
+
+### Image
+![sample](samples/sample.jpg)
+
+### Audio
+▶️ [sample.mp3](samples/sample.mp3)
+
+### Video
+▶️ [sample.mp4](samples/sample.mp4)
+
+## System Architecture
+
+```mermaid
+graph TD
+    A[User Input] --> B[File Validation]
+    B --> C{Identify File Type}
+    C -->|Image| D[ImageAnalyzer]
+    C -->|Audio| E[AudioAnalyzer]
+    C -->|Video| F[VideoAnalyzer]
+    D --> G[Report Generator]
+    E --> G[Report Generator]
+    F --> G[Report Generator]
+    G --> H[report.json]
+```
+
+## Sample Report Output
 ```json
 {
     "File Type Identified": "VIDEO",
-    "File Name": "proper_video.mp4",
+    "File Name": "sample.mp4",
     "File Size": "0.75 MB",
     "Container": "QuickTime / MOV",
     "Duration": "10.03 seconds",
@@ -75,9 +80,8 @@ graph TD
     },
     "Metadata": {
         "major_brand": "mp42",
-        "minor_version": "0",
-        "compatible_brands": "mp42isomavc1",
         "creation_time": "2012-03-13T08:58:06.000000Z",
         "encoder": "HandBrake 0.9.6 2012022800"
     }
-}```
+}
+```
