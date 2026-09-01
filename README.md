@@ -22,3 +22,33 @@ python main.py <path_to_media_file>
 - Pillow (`pip install Pillow`)
 - Mutagen (`pip install mutagen`)
 - FFmpeg/ffprobe installed on the system
+
+## System Architecture / Use Case
+```mermaid
+flowchart TD
+    User([User])
+    
+    subgraph Consolidated Multimedia Analyzer System
+        Validate([Validate File & Size])
+        Identify([Identify File Type])
+        
+        ImgAnalyzer([Image Analysis Module])
+        AudAnalyzer([Audio Analysis Module])
+        VidAnalyzer([Video Analysis Module])
+        
+        ReportGen([JSON Report Generator])
+    end
+    
+    User -->|Input Media File| Validate
+    Validate --> Identify
+    
+    Identify -->|If Image| ImgAnalyzer
+    Identify -->|If Audio| AudAnalyzer
+    Identify -->|If Video| VidAnalyzer
+    
+    ImgAnalyzer --> ReportGen
+    AudAnalyzer --> ReportGen
+    VidAnalyzer --> ReportGen
+    
+    ReportGen -->|Save report.json| User
+```
