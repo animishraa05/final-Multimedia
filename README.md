@@ -28,7 +28,7 @@ python main.py <path_to_media_file>
 flowchart TD
     User([User])
     
-    subgraph Consolidated Multimedia Analyzer System
+    subgraph CMA [Consolidated Multimedia Analyzer System]
         Validate([Validate File & Size])
         Identify([Identify File Type])
         
